@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+imgfile='screenshot.png'
+
+imlib2_grab "${imgfile}"
+echo "Image file: $imgfile"
+	~/git/screen-locker/build/imblur -i "$imgfile" -o "$imgfile" -s 2 -l19
+i3lock -i $imgfile
+
