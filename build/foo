@@ -1,0 +1,112 @@
+digraph "GG" {
+node [
+  fontsize = "12"
+];
+    "node4" [ label="ImageManipulator" shape="diamond"];
+    "node2" [ label="imblur" shape="house"];
+    "node56" [ label="Boost::program_options" shape="ellipse"];
+    "node2" -> "node56"[style = dashed] // imblur -> Boost::program_options
+    "node2" -> "node4"[style = dashed] // imblur -> ImageManipulator
+    "node20" [ label="opencv_aruco" shape="ellipse"];
+    "node2" -> "node20"[style = dashed] // imblur -> opencv_aruco
+    "node21" [ label="opencv_bgsegm" shape="ellipse"];
+    "node2" -> "node21"[style = dashed] // imblur -> opencv_bgsegm
+    "node22" [ label="opencv_bioinspired" shape="ellipse"];
+    "node2" -> "node22"[style = dashed] // imblur -> opencv_bioinspired
+    "node5" [ label="opencv_calib3d" shape="ellipse"];
+    "node2" -> "node5"[style = dashed] // imblur -> opencv_calib3d
+    "node23" [ label="opencv_ccalib" shape="ellipse"];
+    "node2" -> "node23"[style = dashed] // imblur -> opencv_ccalib
+    "node6" [ label="opencv_core" shape="ellipse"];
+    "node2" -> "node6"[style = dashed] // imblur -> opencv_core
+    "node24" [ label="opencv_cvv" shape="ellipse"];
+    "node2" -> "node24"[style = dashed] // imblur -> opencv_cvv
+    "node25" [ label="opencv_datasets" shape="ellipse"];
+    "node2" -> "node25"[style = dashed] // imblur -> opencv_datasets
+    "node7" [ label="opencv_dnn" shape="ellipse"];
+    "node2" -> "node7"[style = dashed] // imblur -> opencv_dnn
+    "node26" [ label="opencv_dnn_objdetect" shape="ellipse"];
+    "node2" -> "node26"[style = dashed] // imblur -> opencv_dnn_objdetect
+    "node27" [ label="opencv_dnn_superres" shape="ellipse"];
+    "node2" -> "node27"[style = dashed] // imblur -> opencv_dnn_superres
+    "node28" [ label="opencv_dpm" shape="ellipse"];
+    "node2" -> "node28"[style = dashed] // imblur -> opencv_dpm
+    "node29" [ label="opencv_face" shape="ellipse"];
+    "node2" -> "node29"[style = dashed] // imblur -> opencv_face
+    "node8" [ label="opencv_features2d" shape="ellipse"];
+    "node2" -> "node8"[style = dashed] // imblur -> opencv_features2d
+    "node9" [ label="opencv_flann" shape="ellipse"];
+    "node2" -> "node9"[style = dashed] // imblur -> opencv_flann
+    "node30" [ label="opencv_freetype" shape="ellipse"];
+    "node2" -> "node30"[style = dashed] // imblur -> opencv_freetype
+    "node31" [ label="opencv_fuzzy" shape="ellipse"];
+    "node2" -> "node31"[style = dashed] // imblur -> opencv_fuzzy
+    "node10" [ label="opencv_gapi" shape="ellipse"];
+    "node2" -> "node10"[style = dashed] // imblur -> opencv_gapi
+    "node32" [ label="opencv_hdf" shape="ellipse"];
+    "node2" -> "node32"[style = dashed] // imblur -> opencv_hdf
+    "node33" [ label="opencv_hfs" shape="ellipse"];
+    "node2" -> "node33"[style = dashed] // imblur -> opencv_hfs
+    "node11" [ label="opencv_highgui" shape="ellipse"];
+    "node2" -> "node11"[style = dashed] // imblur -> opencv_highgui
+    "node34" [ label="opencv_img_hash" shape="ellipse"];
+    "node2" -> "node34"[style = dashed] // imblur -> opencv_img_hash
+    "node12" [ label="opencv_imgcodecs" shape="ellipse"];
+    "node2" -> "node12"[style = dashed] // imblur -> opencv_imgcodecs
+    "node13" [ label="opencv_imgproc" shape="ellipse"];
+    "node2" -> "node13"[style = dashed] // imblur -> opencv_imgproc
+    "node35" [ label="opencv_line_descriptor" shape="ellipse"];
+    "node2" -> "node35"[style = dashed] // imblur -> opencv_line_descriptor
+    "node14" [ label="opencv_ml" shape="ellipse"];
+    "node2" -> "node14"[style = dashed] // imblur -> opencv_ml
+    "node15" [ label="opencv_objdetect" shape="ellipse"];
+    "node2" -> "node15"[style = dashed] // imblur -> opencv_objdetect
+    "node36" [ label="opencv_optflow" shape="ellipse"];
+    "node2" -> "node36"[style = dashed] // imblur -> opencv_optflow
+    "node37" [ label="opencv_phase_unwrapping" shape="ellipse"];
+    "node2" -> "node37"[style = dashed] // imblur -> opencv_phase_unwrapping
+    "node16" [ label="opencv_photo" shape="ellipse"];
+    "node2" -> "node16"[style = dashed] // imblur -> opencv_photo
+    "node38" [ label="opencv_plot" shape="ellipse"];
+    "node2" -> "node38"[style = dashed] // imblur -> opencv_plot
+    "node39" [ label="opencv_quality" shape="ellipse"];
+    "node2" -> "node39"[style = dashed] // imblur -> opencv_quality
+    "node40" [ label="opencv_reg" shape="ellipse"];
+    "node2" -> "node40"[style = dashed] // imblur -> opencv_reg
+    "node41" [ label="opencv_rgbd" shape="ellipse"];
+    "node2" -> "node41"[style = dashed] // imblur -> opencv_rgbd
+    "node42" [ label="opencv_saliency" shape="ellipse"];
+    "node2" -> "node42"[style = dashed] // imblur -> opencv_saliency
+    "node43" [ label="opencv_shape" shape="ellipse"];
+    "node2" -> "node43"[style = dashed] // imblur -> opencv_shape
+    "node44" [ label="opencv_stereo" shape="ellipse"];
+    "node2" -> "node44"[style = dashed] // imblur -> opencv_stereo
+    "node17" [ label="opencv_stitching" shape="ellipse"];
+    "node2" -> "node17"[style = dashed] // imblur -> opencv_stitching
+    "node45" [ label="opencv_structured_light" shape="ellipse"];
+    "node2" -> "node45"[style = dashed] // imblur -> opencv_structured_light
+    "node46" [ label="opencv_superres" shape="ellipse"];
+    "node2" -> "node46"[style = dashed] // imblur -> opencv_superres
+    "node47" [ label="opencv_surface_matching" shape="ellipse"];
+    "node2" -> "node47"[style = dashed] // imblur -> opencv_surface_matching
+    "node48" [ label="opencv_text" shape="ellipse"];
+    "node2" -> "node48"[style = dashed] // imblur -> opencv_text
+    "node49" [ label="opencv_tracking" shape="ellipse"];
+    "node2" -> "node49"[style = dashed] // imblur -> opencv_tracking
+    "node18" [ label="opencv_video" shape="ellipse"];
+    "node2" -> "node18"[style = dashed] // imblur -> opencv_video
+    "node19" [ label="opencv_videoio" shape="ellipse"];
+    "node2" -> "node19"[style = dashed] // imblur -> opencv_videoio
+    "node50" [ label="opencv_videostab" shape="ellipse"];
+    "node2" -> "node50"[style = dashed] // imblur -> opencv_videostab
+    "node51" [ label="opencv_viz" shape="ellipse"];
+    "node2" -> "node51"[style = dashed] // imblur -> opencv_viz
+    "node52" [ label="opencv_xfeatures2d" shape="ellipse"];
+    "node2" -> "node52"[style = dashed] // imblur -> opencv_xfeatures2d
+    "node53" [ label="opencv_ximgproc" shape="ellipse"];
+    "node2" -> "node53"[style = dashed] // imblur -> opencv_ximgproc
+    "node54" [ label="opencv_xobjdetect" shape="ellipse"];
+    "node2" -> "node54"[style = dashed] // imblur -> opencv_xobjdetect
+    "node55" [ label="opencv_xphoto" shape="ellipse"];
+    "node2" -> "node55"[style = dashed] // imblur -> opencv_xphoto
+}

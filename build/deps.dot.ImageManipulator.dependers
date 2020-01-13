@@ -1,0 +1,8 @@
+digraph "GG" {
+node [
+  fontsize = "12"
+];
+    "node4" [ label="ImageManipulator" shape="diamond"];
+    "node2" [ label="imblur" shape="house"];
+    "node2" -> "node4" // ImageManipulator -> imblur
+[style = dashed]}
