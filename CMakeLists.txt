@@ -30,5 +30,5 @@ target_link_libraries(imblur PRIVATE ${OpenCV_LIBS} ${Boost_LIBRARIES} ImageMani
 add_custom_target(graphviz ALL
                   COMMAND "${CMAKE_COMMAND}" "--graphviz=deps.dot" .
                   COMMAND dot -Tpng deps.dot -o deps.png
-                  COMMAND cp deps.png ${PROJECT_SOURCE_DIR}
+                  COMMAND cp deps.png ${PROJECT_SOURCE_DIR}/doc
                   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
