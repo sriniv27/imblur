@@ -23,7 +23,7 @@ build:
            - "*.o"
 
 # run tests using the binary built before
-test:
+# test:
   # stage: test
   # script:
     #- ./runmytests.sh
