@@ -11,12 +11,10 @@ build:
   before_script:
     - apt update && apt -y install make autoconf cmake opencv boost
   script:
-    - g++ helloworld.cpp -o mybinary
+    - mkdir -p build
+    - cd build && cmake .. && cd ..
+    - cmake -build build
   artifacts:
     paths:
       - build/imblur
-      # depending on your build setup it's most likely a good idea to cache outputs to reduce the build time
-       cache:
-         paths:
-           - "build/**/*.o"
-
+      
