@@ -9,22 +9,14 @@ build:
   # instead of calling g++ directly you can also use some build toolkit like make
   # install the necessary build tools when needed
   before_script:
-     - apt update && apt -y install make autoconf cmake boost opencv4
-     - mkdir -p build 
+    - apt update && apt -y install make autoconf cmake opencv boost
   script:
-  
-    - pushd build && cmake ..   && popd
-    - cmake -build build
+    - g++ helloworld.cpp -o mybinary
   artifacts:
     paths:
-        - build
+      - build/imblur
       # depending on your build setup it's most likely a good idea to cache outputs to reduce the build time
        cache:
          paths:
-           - "*.o"
+           - "build/**/*.o"
 
-# run tests using the binary built before
-# test:
-  # stage: test
-  # script:
-    #- ./runmytests.sh
