@@ -2,7 +2,7 @@
 pushd .
 imlib2_grab ./screenshot.png
 ./imblur "$@"
-cp "./screenshot.png" "/home/suhass/screenshot.png"
-i3lock -i '/home/suhass/screenshot.png'
+
+i3lock -i './screenshot.png'
 
 popd || exit
