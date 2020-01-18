@@ -10,7 +10,6 @@ build:
   # install the necessary build tools when needed
   before_script:
      - apt update
-     - apt install -y --reinstall gfortran libcoarrays-dev libopenmpi-dev
      - apt install -f 
      - apt install  build-essential cmake libboost-all libopencv
      
