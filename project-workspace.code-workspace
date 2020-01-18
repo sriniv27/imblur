@@ -43,6 +43,7 @@
 				"-s69",
 				"-l20"
 			]
-		}
+		},
+		"docker.defaultRegistryPath": "registry.gitlab.com/sugas182"
 	}
 }
