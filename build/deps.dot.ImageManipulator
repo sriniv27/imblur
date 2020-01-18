@@ -2,5 +2,5 @@ digraph "GG" {
 node [
   fontsize = "12"
 ];
-    "node4" [ label="ImageManipulator" shape="diamond"];
+    "node2" [ label="ImageManipulator" shape="polygon"];
 }

@@ -1,0 +1,47 @@
+{
+	"folders": [
+		 {
+			 "path": "."
+		 }
+	],
+	"launch": {
+		"configurations": [
+			{
+				"name": "(gdb) Launch imblur",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "./imblur -i 'screencap.png' -s 69",
+			"args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+			"MIMode": "gdb",
+			
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+			]
+		}
+		],
+		"compounds": []
+	},
+	"settings": {
+		"cmake.environment": {
+			"CC" : "clang",
+			"CXX" : "clang++"
+		},
+		"cmake.generator":"Unix Makefiles",
+		"cmake.configureOnOpen": true,
+		"cmake.debugConfig": {
+			"args": [
+				"-iscreencap.png",
+				"-s69",
+				"-l20"
+			]
+		}
+	}
+}

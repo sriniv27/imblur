@@ -2,7 +2,7 @@ digraph "GG" {
 node [
   fontsize = "12"
 ];
-    "node4" [ label="ImageManipulator" shape="diamond"];
-    "node2" [ label="imblur" shape="house"];
-    "node2" -> "node4" // ImageManipulator -> imblur
+    "node2" [ label="ImageManipulator" shape="polygon"];
+    "node4" [ label="imblur" shape="house"];
+    "node4" -> "node2" // ImageManipulator -> imblur
 [style = dashed]}
