@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-imlib2_grab screenshot.png
-./imblur -iscreenshot.png -ooutImage.png -s69 -l11
-  
-i3lock -i outImage.png
+imlib2_grab ./screenshot.png
+./imblur "$@"
+cp "./screenshot.png" "/home/suhass/screenshot.png"
+i3lock -i '/home/suhass/screenshot.png'
 

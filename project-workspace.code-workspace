@@ -39,6 +39,7 @@
 		"cmake.debugConfig": {
 			"args": [
 				"-iscreencap.png",
+				"-qyes",
 				"-s69",
 				"-l20"
 			]

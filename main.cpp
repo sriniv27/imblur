@@ -1,7 +1,9 @@
 #include <iostream>
 #include <boost/stacktrace.hpp>
 #include <boost/program_options.hpp>
-#include "ImageManipulator.hpp"
+#include <opencv4/opencv2/imgproc.hpp>
+#include <opencv4/opencv2/core.hpp>
+#include <opencv4/opencv2/highgui.hpp>
 namespace po = boost::program_options; // see here for doc: https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 
 using namespace std;
@@ -29,7 +31,7 @@ int main(int ac, char*av[]){
     ("output-file,o",po::value<string>(&outfilename)->default_value("output.png"),"Output file name")
     ("loop,l",po::value<int>(&numLoops)->default_value(1),"number of times to run blurring option")
     ("blursize,s",po::value<int>(&blursize)->required(),"Blur size.")
-    ("quiet,q","Quiet (no print to stdout)")
+    ("quiet,q",po::value<bool>(&quietOutput)->default_value(false),"Quiet (no print to stdout)")
     ;
   po::variables_map vm;
 
@@ -47,11 +49,12 @@ int main(int ac, char*av[]){
     
 
 image = imread(filename, cv::ImreadModes::IMREAD_GRAYSCALE);
+  if (!quietOutput){
     cout<< "in filename: " << boost::lexical_cast<string>(filename)<<"\n";
       cout<< "out filename: " << boost::lexical_cast<string>(outfilename)<<"\n";
   cout<< "Blur size: " << boost::lexical_cast<string>(blursize)<<"\n";
     cout<< "num loops: " << boost::lexical_cast<string>(numLoops)<<"\n";
-  ImageManipulator imgObj{image, blursize, numLoops};
+  }
  auto ctr=0;
  Mat output_image_data;
 while (ctr < numLoops){
@@ -69,15 +72,15 @@ while (ctr < numLoops){
   }
   catch(cv::Exception& cvException){
     cerr << "Runtime Error: \n\n" << cvException.msg << "\n";
- cout << "ERROR CODE: " << cvException.code << "\n";
+ cerr << "ERROR CODE: " << cvException.code << "\n";
 
- cout << boost::stacktrace::stacktrace();
+ cerr << boost::stacktrace::stacktrace();
     return cvException.code;
   }
   catch(...){
     cerr << "EXCEPTION UNKOWN!!";
     
-    cout << boost::stacktrace::stacktrace();
+    cerr << boost::stacktrace::stacktrace();
     return 2;
   }
 return 0;

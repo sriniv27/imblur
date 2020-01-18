@@ -35,9 +35,8 @@ add_executable(imblur ${SRC_FILES})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_library(ImageManipulator SHARED ImageManipulator.cpp)
+target_link_libraries(imblur PRIVATE ${CMAKE_DL_LIBS} ${CMAKE_THREAD_LIBS_INIT} ${OpenCV_LIBS} ${Boost_LIBRARIES})
 
-target_link_libraries(imblur PRIVATE ${CMAKE_DL_LIBS} ${CMAKE_THREAD_LIBS_INIT} ${OpenCV_LIBS} ${Boost_LIBRARIES}  ImageManipulator)
 add_custom_target(graphviz ALL
   COMMAND "${CMAKE_COMMAND}" "--graphviz=deps.dot" .
   COMMAND dot -Tpng deps.dot -o deps.png
