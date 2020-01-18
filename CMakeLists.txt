@@ -19,6 +19,7 @@ find_package( OpenCV
   core 
   imgproc
   highgui
+  imgcodecs
   REQUIRED)
 
 
