@@ -1,7 +1,16 @@
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-find_program(PKG_CONFIG pkg-config)
-find_package(PkgConfig)
+
+include(CPack)
+set(CMAKE_C_FLAGS "-Wall -Wextra -ggdb -fPIC" )
+
+set(CMAKE_BUILD_TYPE "Debug")
+
+# Project Specific Options
+project(screen-lock C CXX )
+
+set(CXX g++)
+set(CC gcc)
 find_package( Boost 
   COMPONENTS
   program_options REQUIRED)
@@ -11,17 +20,9 @@ find_package( OpenCV
   imgproc
   highgui
   REQUIRED)
+
+
 find_package(Threads)
-
-include(CPack)
-set(CMAKE_C_FLAGS "-Wall -Wextra -ggdb3 -fPIC" )
-set(CMAKE_CXX_FLAGS "-std=c++0x -fPIC" )
-set(CMAKE_BUILD_TYPE "Debug")
-set(CXX g++)
-set(CC gcc)
-# Project Specific Options
-project(screen-lock C CXX )
-
 file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/*.cpp)
 
 include_directories(${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})

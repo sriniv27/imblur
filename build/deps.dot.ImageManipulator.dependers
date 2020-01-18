@@ -1,8 +1,0 @@
-digraph "GG" {
-node [
-  fontsize = "12"
-];
-    "node2" [ label="ImageManipulator" shape="polygon"];
-    "node4" [ label="imblur" shape="house"];
-    "node4" -> "node2" // ImageManipulator -> imblur
-[style = dashed]}
