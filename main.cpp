@@ -1,9 +1,9 @@
 #include <iostream>
 #include <boost/stacktrace.hpp>
 #include <boost/program_options.hpp>
-#include <opencv4/opencv2/imgproc.hpp>
-#include <opencv4/opencv2/core.hpp>
-#include <opencv4/opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 namespace po = boost::program_options; // see here for doc: https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 
 using namespace std;
