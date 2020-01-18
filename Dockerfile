@@ -13,11 +13,12 @@ COPY screenshot.png /usr/src/screen-locker
 # Specify the working directory
 WORKDIR /usr/src/screen-locker
 RUN mkdir -p build
+RUN cmake --build build 
+
 # Use Clang to compile the Test.cpp source file
-RUN cmake -B build 
-RUN cmake --build build
+
 
 # Run the output program from the previous step
-CMD ["./imblur -iscreenshot.png -s255 -l3"]
+
 
 LABEL Name=screen-locker Version=0.0.1
