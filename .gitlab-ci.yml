@@ -11,7 +11,8 @@ build:
   before_script:
      - apt update
      - apt install -f 
-     - apt install -y build-essential cmake libboost-all-dev libopencv-dev
+     - dpkg configure -a
+     - apt install -y build-essential cmake libboost-all-dev libopencv-dev-all
      
   script:
     - cmake -B build
