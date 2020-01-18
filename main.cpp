@@ -49,6 +49,7 @@ int main(int ac, char*av[]){
     
 
 image = imread(filename, cv::ImreadModes::IMREAD_GRAYSCALE);
+  
   if (!quietOutput){
     cout<< "in filename: " << boost::lexical_cast<string>(filename)<<"\n";
       cout<< "out filename: " << boost::lexical_cast<string>(outfilename)<<"\n";

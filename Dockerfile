@@ -13,12 +13,11 @@ RUN apt-get install -f
 RUN apt-get -y install clang cmake libboost-all-dev libopencv-dev
 
 # Copy the current folder which contains C++ source code to the Docker image under /usr/src
-COPY . /usr/src/screen-locker
-COPY screenshot.png /usr/src/screen-locker
+
+COPY screenshot.png screenshot.png
 # Specify the working directory
-WORKDIR /usr/src/screen-locker
-RUN mkdir -p build
-RUN cd build && cmake ..
+
+
 
 # Use Clang to compile the Test.cpp source file
 
