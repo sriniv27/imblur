@@ -2,16 +2,13 @@
 # use the official gcc image, based on debian
 # can use verions as well, like gcc:5.2
 # see https://hub.docker.com/_/gcc/
-image: gcc:9
+image: screen-locker:latest
 
 build:
   stage: build
   # instead of calling g++ directly you can also use some build toolkit like make
   # install the necessary build tools when needed
-  before_script:
-     - apt update
-     - apt install -f 
-     - apt install -y  cmake libboost-all-dev libopencv-dev
+  
      
   script:
     - cmake -B build
