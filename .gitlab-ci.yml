@@ -26,3 +26,6 @@ doc:
   script:
     - cmake -B build
     - cmake --build build --target Documentation
+  artifacts: 
+   paths: 
+    - build/html/**
