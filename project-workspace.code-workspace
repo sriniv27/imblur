@@ -39,9 +39,8 @@
 		"cmake.debugConfig": {
 			"args": [
 				"-iscreencap.png",
-				"-qyes",
-				"-s69",
-				"-l20"
+				"-s1 69",
+				"-s2 33"
 			]
 		},
 		"docker.defaultRegistryPath": "registry.gitlab.com/sugas182"
