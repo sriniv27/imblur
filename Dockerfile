@@ -21,6 +21,7 @@ COPY screenshot.png /usr/src/screenshot.png
 
 RUN mkdir -p /usr/src/screen-locker/build
 WORKDIR /usr/src/screen-locker
+RUN rm -rf build
 RUN cmake -B build 
 RUN cmake -DCMAKE_BUILD_TYPE=Debug --build build
 LABEL Name=screen-locker Version=1.0
