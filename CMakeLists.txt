@@ -22,7 +22,9 @@ find_package( OpenCV
   imgcodecs
   REQUIRED)
 
-
+find_package(Doxygen 
+REQUIRED dot 
+OPTIONAL_COMPONENTS mscgen dia)
 find_package(Threads)
 file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/*.cpp)
 
@@ -52,4 +54,10 @@ add_custom_target(graphviz ALL
   POST_BUILD
   COMMAND cp ${CMAKE_BINARY_DIR}/imblur ${PROJECT_SOURCE_DIR}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  )
+
+  doxygen_add_docs(
+    doc
+    ${PROJECT_SOURCE_DIR}
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc
   )

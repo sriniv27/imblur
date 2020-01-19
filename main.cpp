@@ -4,10 +4,20 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
+
 namespace po = boost::program_options; // see here for doc: https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 
 using namespace std;
 using namespace cv;
+
+/**
+ * @brief Wrapper around cv::GaussianBlur that takes the address of the image being manipulated and 
+ * 
+ * @param imgIn 
+ * @param imgOut 
+ * @param rows 
+ * @param cols 
+ */
 void blurFunction(const Mat& imgIn, Mat& imgOut,const int& rows, const int& cols){
 auto ksize = Size(rows, cols);  
   GaussianBlur(imgIn,imgOut , ksize, 1 );

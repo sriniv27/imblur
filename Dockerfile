@@ -12,7 +12,7 @@ RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
 RUN apt-get update
 # Install the Clang compiler
 RUN apt-get install -f
-RUN apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz
+RUN apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen 
 
 # Copy the current folder which contains C++ source code to the Docker image under /usr/src
 COPY . /usr/src/screen-locker/

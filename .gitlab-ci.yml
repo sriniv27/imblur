@@ -20,3 +20,8 @@ build:
   cache:
     paths:
       - "build/**"
+
+doc:
+  stage: build
+  script:
+    - cmake --build build --target doc 
