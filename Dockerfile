@@ -18,10 +18,9 @@ RUN apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxyg
 COPY . /usr/src/screen-locker/
 COPY screenshot.png /usr/src/screenshot.png
 # Specify the working directory
-
-RUN mkdir -p /usr/src/screen-locker/build
 WORKDIR /usr/src/screen-locker
 RUN rm -rf build
+RUN mkdir -p build
 RUN cmake -B build 
 RUN cmake -DCMAKE_BUILD_TYPE=Debug --build build
 LABEL Name=screen-locker Version=1.0
