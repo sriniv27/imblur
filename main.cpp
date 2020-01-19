@@ -15,13 +15,16 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 
-namespace po = boost::program_options; // see here for doc: https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 
+namespace po = boost::program_options;
+ /// see here for doc: https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 using namespace std;
 using namespace cv;
 
 /**
- * @brief Wrapper around cv::GaussianBlur that takes the address of the image being manipulated and 
+ * @brief Wrapper around cv::GaussianBlur that takes the address of the image 
+ * being manipulated along with directed kernel matrix size paramter and applies 
+ * a GaussianBlur on it.
  * 
  * @param imgIn 
  * @param imgOut 
@@ -35,7 +38,8 @@ auto ksize = Size(rows, cols);
 
 
 /**
- * @brief imblur takes an image along with kernel size parameters and blurs it to be passed to a screen locker of your choice.
+ * @brief imblur takes an image along with kernel size parameters and 
+ * blurs it to be passed to a screen locker of your choice.
  * 
  * @param ac 
  * @param av 
