@@ -25,4 +25,4 @@ doc:
   stage: build
   script:
     - cmake -B build
-    - cmake --build build --target doc 
+    - cmake --build build --target Documentation

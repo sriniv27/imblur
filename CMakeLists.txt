@@ -56,8 +56,11 @@ add_custom_target(graphviz ALL
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
 
+  set(DOXYGEN_DENERATE_MAN YES)
+  set(DOXYGEN_GENERATE_HTML YES)
   doxygen_add_docs(
-    doc
+    Documentation
     ${PROJECT_SOURCE_DIR}
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc
+    
   )
+  install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION documentation)
