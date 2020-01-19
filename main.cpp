@@ -1,3 +1,13 @@
+/**
+ * @file main.cpp
+ * @author Suhas (sugas182@gmail.com)
+ * @brief Blur an image given its path and kernel size parameters 
+ * @version 0.1
+ * @date 2020-01-19
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <iostream>
 #include <boost/stacktrace.hpp>
 #include <boost/program_options.hpp>
@@ -24,7 +34,13 @@ auto ksize = Size(rows, cols);
 }
 
 
-
+/**
+ * @brief imblur takes an image along with kernel size parameters and blurs it to be passed to a screen locker of your choice.
+ * 
+ * @param ac 
+ * @param av 
+ * @return int 
+ */
 int main(int ac, char*av[]){
   
   try{
