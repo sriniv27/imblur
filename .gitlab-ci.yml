@@ -19,10 +19,12 @@ build:
       # depending on your build setup it's most likely a good idea to cache outputs to reduce the build time
   cache:
     paths:
-      - "build/**"
+      - build/**
 
 doc:
   stage: build
+  before_script: 
+    - apt install -y pandoc 
   script:
     - cmake -B build
     - cmake --build build --target Documentation
