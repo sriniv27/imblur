@@ -16,7 +16,7 @@ RUN apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxyg
 
 # Copy the current folder which contains C++ source code to the Docker image under /usr/src
 COPY . /usr/src/screen-locker/
-COPY screenshot.png /usr/src/screenshot.png
+
 # Specify the working directory
 WORKDIR /usr/src/screen-locker
 RUN rm -rf build
