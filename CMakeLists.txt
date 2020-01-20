@@ -26,7 +26,7 @@ find_package(Doxygen
 REQUIRED dot 
 OPTIONAL_COMPONENTS mscgen dia)
 find_package(Threads)
-file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/*.cpp)
+file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 include_directories(${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 message(STATUS "OpenCV library status:")
@@ -65,4 +65,3 @@ add_custom_target(graphviz ALL
     ${PROJECT_SOURCE_DIR}
     
   )
-  install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION documentation)
