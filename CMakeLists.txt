@@ -22,9 +22,11 @@ find_package( OpenCV
   imgcodecs
   REQUIRED)
 
-
+find_package(Doxygen 
+REQUIRED dot 
+OPTIONAL_COMPONENTS mscgen dia)
 find_package(Threads)
-file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/*.cpp)
+file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 include_directories(${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 message(STATUS "OpenCV library status:")
@@ -52,4 +54,14 @@ add_custom_target(graphviz ALL
   POST_BUILD
   COMMAND cp ${CMAKE_BINARY_DIR}/imblur ${PROJECT_SOURCE_DIR}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  )
+
+  set(DOXYGEN_DENERATE_MAN NO)
+  set(DOXYGEN_GENERATE_HTML YES)
+  set(DOXYGEN_GENERATE_XML YES)
+  set(DOXYGEN_GENERATE_TREEVIEW YES)
+  doxygen_add_docs(
+    Documentation
+    ${PROJECT_SOURCE_DIR}
+    
   )
