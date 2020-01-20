@@ -34,6 +34,12 @@
 			"CC" : "clang",
 			"CXX" : "clang++"
 		},
+		"C_Cpp.default.includePath": [
+			
+                "${workspaceFolder}/**",
+                "/usr/include/opencv4"
+            
+		],
 		"cmake.generator":"Unix Makefiles",
 		"cmake.configureOnOpen": true,
 		"cmake.debugConfig": {
