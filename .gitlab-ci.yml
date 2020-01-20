@@ -26,6 +26,8 @@ doc:
   script:
     - cmake -B build
     - cmake --build build --target Documentation
+    - pandoc build/xml/index.xml -f xml -t markdown -s -o doc.md
   artifacts: 
    paths: 
     - build/html/**
+    - doc.md
