@@ -23,4 +23,10 @@ RUN rm -rf build
 RUN mkdir -p build
 RUN cmake -B build 
 RUN cmake -DCMAKE_BUILD_TYPE=Debug --build build
+
+# Set up the Frontend via VNC, etc. 
+
+
+
+
 LABEL Name=screen-locker Version=1.0
