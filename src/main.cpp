@@ -91,7 +91,7 @@ if(vm.count("help")){
     
 
 
-image = imread(filename, cv::ImreadModes::IMREAD_REDUCED_COLOR_8); ///TODO: imread flags could be turned into a user configuration later maybe. 
+image = imread(filename, cv::ImreadModes::IMREAD_UNCHANGED); ///TODO: imread flags could be turned into a user configuration later maybe. 
   
   if (!quietOutput){
     cout<< "in filename: " << boost::lexical_cast<string>(filename)<<"\n";

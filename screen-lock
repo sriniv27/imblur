@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 pushd .
-imlib2_grab  screenshot.png
+imgfile="/tmp/screenshot.png"
+rm ${imgfile}
+imlib2_grab -w 3840 -h 2160 ${imgfile}
+# import -window root -density 3840x2160 -quality 80 ${imgfile}
 
-./imblur -i screenshot.png -o screenshot.png -r 21 -c 9 -q yes
-i3lock -t -i 'screenshot.png'
-# feh screenshot.png
+./imblur -i "${imgfile}" -o "${imgfile}" -r 11 -c 69 -q yes
+i3lock -t -i "${imgfile}"
+# feh "${imgfile}"
 popd || exit
