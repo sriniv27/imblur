@@ -10,7 +10,8 @@ build:
   # install the necessary build tools when needed
 
   before_script:
-    - git submodule update --init
+    - git submodule sync --recursive
+    - git submodule update --init --recursive
   script:
     - cmake -B build
     - cmake --build build
@@ -22,7 +23,8 @@ build:
 doc:
   stage: build
   before_script:
-    - git submodule update --init
+    - git submodule sync --recursive
+    - git submodule update --init --recursive
     - apt install -y pandoc
   script:
     - cmake -B build
