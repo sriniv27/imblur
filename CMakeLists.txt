@@ -34,9 +34,9 @@ find_package(Doxygen
 REQUIRED dot
 OPTIONAL_COMPONENTS mscgen dia)
 find_package(Threads)
-
+find_package(spdlog)
 # Configure build
-file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
+file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/**/*.cpp)
 
 include_directories(${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 message(STATUS "OpenCV library status:")
@@ -51,7 +51,7 @@ message(STATUS "    libraries: ${Boost_LIBRARIES}")
 
 add_executable(imblur ${SRC_FILES})
 
-add_subdirectory(spdlog)
+
 
 add_custom_target(graphviz ALL
   COMMAND "${CMAKE_COMMAND}" "--graphviz=deps.dot" .
