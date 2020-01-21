@@ -15,7 +15,6 @@
 #include <boost/stacktrace.hpp>
 #include <iostream>
 #include <opencv2/core.hpp>
-#include <opencv2/core/utils/logger.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 namespace po = boost::program_options;
