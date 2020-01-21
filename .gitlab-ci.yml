@@ -25,11 +25,10 @@ doc:
   before_script:
     - git submodule sync --recursive
     - git submodule update --init --recursive
-    - apt install -y pandoc
+
   script:
     - cmake -B build
     - cmake --build build --target Documentation
-    - pandoc build/html/index.html -f html -t markdown -s -o doc.md
   artifacts:
     paths:
       - build/html/**
