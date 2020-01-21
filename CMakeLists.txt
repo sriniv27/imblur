@@ -1,31 +1,41 @@
+# CMake Level Configuration
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(CPack)
-set(CMAKE_C_FLAGS "-Wall -Wextra -ggdb -fPIC" )
+set(CMAKE_C_FLAGS "-Wall -Wextra -ggdb" )
 
 set(CMAKE_BUILD_TYPE "Debug")
 
-# Project Specific Options
+# Project & Language Options
 project(screen-lock C CXX )
+## specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CXX g++)
 set(CC gcc)
-find_package( Boost 
+
+# Package and Component Dependencies
+
+find_package( Boost
   COMPONENTS
   program_options REQUIRED)
-find_package( OpenCV 
+
+  find_package( OpenCV
   COMPONENTS
-  core 
+  core
   imgproc
   highgui
   imgcodecs
   REQUIRED)
 
-find_package(Doxygen 
-REQUIRED dot 
+find_package(Doxygen
+REQUIRED dot
 OPTIONAL_COMPONENTS mscgen dia)
 find_package(Threads)
+
+# Configure build
 file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 include_directories(${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
@@ -37,12 +47,11 @@ message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
 message(STATUS "Boost library status: ")
 message(STATUS "    libraries: ${Boost_LIBRARIES}")
-add_executable(imblur ${SRC_FILES})
-# specify the C++ standard
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-target_link_libraries(imblur PRIVATE ${CMAKE_DL_LIBS} ${CMAKE_THREAD_LIBS_INIT} ${OpenCV_LIBS} ${Boost_LIBRARIES})
+
+add_executable(imblur ${SRC_FILES})
+
+add_subdirectory(spdlog)
 
 add_custom_target(graphviz ALL
   COMMAND "${CMAKE_COMMAND}" "--graphviz=deps.dot" .
@@ -57,11 +66,16 @@ add_custom_target(graphviz ALL
   )
 
   set(DOXYGEN_DENERATE_MAN NO)
-  set(DOXYGEN_GENERATE_HTML YES)
+  set(DOXYGEN_GENERATE_HTML NO)
   set(DOXYGEN_GENERATE_XML YES)
   set(DOXYGEN_GENERATE_TREEVIEW YES)
+  set(DOXYGEN_USE_MDFILE_AS_MAINPAGE YES)
   doxygen_add_docs(
     Documentation
     ${PROJECT_SOURCE_DIR}
-    
+
   )
+
+
+# Final link phases of all targets
+target_link_libraries(imblur PRIVATE ${CMAKE_DL_LIBS} ${CMAKE_THREAD_LIBS_INIT} spdlog::spdlog ${OpenCV_LIBS} ${Boost_LIBRARIES})
