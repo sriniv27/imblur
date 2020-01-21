@@ -1,54 +1,46 @@
 {
-	"folders": [
-		 {
-			 "path": "."
-		 }
-	],
-	"launch": {
-		"configurations": [
-			{
-				"name": "(gdb) Launch imblur",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "./imblur -i 'screencap.png' -s 69",
-			"args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-			"MIMode": "gdb",
-			
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-			]
-		}
-		],
-		"compounds": []
-	},
-	"settings": {
-		"cmake.environment": {
-			"CC" : "clang",
-			"CXX" : "clang++"
-		},
-		"C_Cpp.default.includePath": [
-			
-                "${workspaceFolder}/**",
-                "/usr/include/opencv4"
-            
-		],
-		"cmake.generator":"Unix Makefiles",
-		"cmake.configureOnOpen": true,
-		"cmake.debugConfig": {
-			"args": [
-				"-iscreencap.png",
-				"-s1 69",
-				"-s2 33"
-			]
-		},
-		"docker.defaultRegistryPath": "registry.gitlab.com/sugas182"
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "launch": {
+    "configurations": [
+      {
+        "name": "(gdb) Launch imblur",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "./imblur -i 'screencap.png' -s 69",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ]
+      }
+    ],
+    "compounds": []
+  },
+  "settings": {
+    "C_Cpp.clang_format_sortIncludes": false,
+    "C_Cpp.default.includePath": [
+      "${workspaceFolder}/**",
+      "/usr/include/opencv4",
+      "/usr/include/opencv4/opencv2/"
+    ],
+    "cmake.generator": "Unix Makefiles",
+    "cmake.configureOnOpen": true,
+    "cmake.debugConfig": {
+      "args": ["-iscreencap.png", "-s1 69", "-s2 33"]
+    },
+    "docker.defaultRegistryPath": "registry.gitlab.com/sugas182"
+  }
 }
