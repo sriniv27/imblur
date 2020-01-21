@@ -8,9 +8,10 @@
  * @copyright Copyright (c) 2020
  *
  */
-#include "spdlog/spdlog.h" //https://github.com/gabime/spdlog
 
-#include "spdlog/sinks/stdout_color_sinks.h"
+
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_sinks.h>
 #include <boost/program_options.hpp>
 #include <boost/stacktrace.hpp>
 #include <iostream>

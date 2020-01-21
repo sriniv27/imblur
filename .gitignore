@@ -18,3 +18,5 @@ logs.log
 imblur
 TAGS
 project-workspace.code-workspace
+.devcontainer/**
+spdlog-1.5.0/**

@@ -34,7 +34,12 @@ find_package(Doxygen
 REQUIRED dot
 OPTIONAL_COMPONENTS mscgen dia)
 find_package(Threads)
-find_package(spdlog)
+
+set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/spdlog)
+
+
+
+
 # Configure build
 file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/**/*.cpp)
 
@@ -51,6 +56,7 @@ message(STATUS "    libraries: ${Boost_LIBRARIES}")
 
 add_executable(imblur ${SRC_FILES})
 
+find_package(spdlog)
 
 
 add_custom_target(graphviz ALL
@@ -79,4 +85,4 @@ add_custom_target(graphviz ALL
 
 
 # Final link phases of all targets
-target_link_libraries(imblur PRIVATE ${CMAKE_DL_LIBS} ${CMAKE_THREAD_LIBS_INIT} spdlog::spdlog ${OpenCV_LIBS} ${Boost_LIBRARIES})
+target_link_libraries(imblur PRIVATE spdlog::spdlog ${CMAKE_DL_LIBS} ${CMAKE_THREAD_LIBS_INIT} ${OpenCV_LIBS} ${Boost_LIBRARIES})
