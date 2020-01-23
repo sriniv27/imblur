@@ -5,8 +5,6 @@ testfile.png
 .vscode/launch.json
 .vscode/settings.json
 build/**
-
-build/
 .dir-locals.el
 screenshot_2.png
 screencap.png
@@ -20,3 +18,4 @@ TAGS
 project-workspace.code-workspace
 .devcontainer/**
 spdlog-1.5.0/**
+!build/doc_build.md

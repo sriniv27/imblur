@@ -37,8 +37,8 @@ void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows,
  */
 int main(int ac, char *av[]) {
 
-  auto console = spdlog::stdout_color_mt("console");
-  auto err_logger = spdlog::stderr_color_mt("stderr");
+  auto console = spdlog::stdout_logger_mt("console");
+  auto err_logger = spdlog::stderr_logger_mt("stderr");
   try {
     Mat image;
     string filename;

@@ -8,7 +8,7 @@ imlib2_grab -noshape -w 3840 -h 2160 ${imgfile}
 # shellcheck disable=SC2034 # Unused variable _i left for readability
 for _i in {0..5}
 do
-./imblur -i "${imgfile}" -o "${imgfile}" -r 3 -c 5 -q yes
+imblur -i "${imgfile}" -o "${imgfile}" -r 3 -c 5 -q yes
 
 done
 i3lock -t -i "${imgfile}"

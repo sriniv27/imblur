@@ -57,7 +57,7 @@ message(STATUS "    libraries: ${Boost_LIBRARIES}")
 add_executable(imblur ${SRC_FILES})
 
 find_package(spdlog)
-
+install(TARGETS imblur)
 
 add_custom_target(graphviz ALL
   COMMAND "${CMAKE_COMMAND}" "--graphviz=deps.dot" .

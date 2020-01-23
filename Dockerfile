@@ -12,22 +12,12 @@ RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
 RUN apt-get update
 # Install the Clang compiler
 RUN apt-get install -f
-RUN apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev
+RUN apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client
 
+RUN ssh-keyscan -t rsa github.com ~/.ssh/known-hosts
+RUN ssh-keyscan -t rsa gitlab.com ~/.ssh/known-hosts
 
 # Copy the current folder which contains C++ source code to the Docker image under /usr/src
 COPY . /usr/src/screen-locker/
-
-# Specify the working directory
-WORKDIR /usr/src/screen-locker
-RUN rm -rf build
-RUN mkdir -p build
-RUN cmake -B build 
-RUN cmake -DCMAKE_BUILD_TYPE=Debug --build build
-
-# Set up the Frontend via VNC, etc. 
-
-
-
 
 LABEL Name=screen-locker Version=1.0
