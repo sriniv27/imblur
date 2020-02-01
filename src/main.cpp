@@ -9,7 +9,6 @@
  *
  */
 
-
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_sinks.h>
 #include <boost/program_options.hpp>
@@ -46,7 +45,7 @@ int main(int ac, char *av[]) {
     int rows = 0;
     int cols = 0;
     bool quietOutput = false;
-
+    int numLoops;
     po::options_description desc("helptext");
     desc.add_options()("help,h", "detailed help text")(
         "input-file,i", po::value<string>(&filename), "Input file name")(
@@ -57,8 +56,9 @@ int main(int ac, char *av[]) {
         "cols,c", po::value<int>(&cols)->default_value(3),
         "number of columns in the smoothing kernel")(
         "quiet,q", po::value<bool>(&quietOutput)->default_value(false),
-        "Quiet (no print to stdout)");
-
+        "Quiet (no print to stdout)")(
+        "numloops,l", po::value<int>(&numLoops)->default_value(1),
+        "Number of times to run smoothing operation");
     po::variables_map vm;
     po::store(po::parse_command_line(ac, av, desc), vm);
 
@@ -69,7 +69,6 @@ int main(int ac, char *av[]) {
     }
 
     if (vm.count("input-file")) {
-      cout << "Input file: " << filename << "\n";
     } else {
       cerr << "Input file not specified. Exiting"
            << "\n";
@@ -96,9 +95,10 @@ int main(int ac, char *av[]) {
 
     auto ctr = 0;
     Mat output_image_data;
-
-    blurFunction(image, image, rows, cols);
-
+    while (ctr < numLoops) {
+      blurFunction(image, image, rows, cols);
+      ctr++;
+    }
     imwrite(outfilename, image);
     return 0;
   } catch (po::error &e) {

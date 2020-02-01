@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 pushd .
-imgfile="/tmp/screenshot.png"
-rm ${imgfile}
-imlib2_grab -noshape -w 3840 -h 2160 ${imgfile}
+imgfile=~/screenshot.png
+rm "${imgfile}"
+imlib2_grab "${imgfile}"
 # import -window root -density 3840x2160 -depth 8 -quality 40 ${imgfile}
 
 # shellcheck disable=SC2034 # Unused variable _i left for readability
-for _i in {0..5}
-do
-imblur -i "${imgfile}" -o "${imgfile}" -r 3 -c 5 -q yes
+imblur -i "${imgfile}" -o "${imgfile}" -r 3 -c 5 -q yes -l 69
 
-done
 i3lock -t -i "${imgfile}"
-rm "${imgfile}"
 # feh "${imgfile}"
 popd || exit
