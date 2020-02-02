@@ -35,6 +35,10 @@ REQUIRED dot
 OPTIONAL_COMPONENTS mscgen dia)
 find_package(Threads)
 
+set(CLANG_FORMAT_BIN_NAME clang-format-3.6)
+set(CLANG_FORMAT_EXCLUDE_PATTERNS  "build/" ${CMAKE_BINARY_DIR})
+find_package(ClangFormat)
+
 set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/spdlog)
 
 

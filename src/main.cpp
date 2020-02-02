@@ -9,14 +9,14 @@
  *
  */
 
-#include <spdlog/spdlog.h>
-#include <spdlog/sinks/stdout_sinks.h>
 #include <boost/program_options.hpp>
 #include <boost/stacktrace.hpp>
 #include <iostream>
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <spdlog/sinks/stdout_sinks.h>
+#include <spdlog/spdlog.h>
 namespace po = boost::program_options;
 
 /// see here for doc:
