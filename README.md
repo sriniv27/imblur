@@ -9,7 +9,7 @@ The core program is outlined in main.cpp and provides the imblur executable.
 ## Installation
 
 ```
-$ git clone git@gitlab.com:sugas182/screen-locker.git screen-locker
+$ git clone https://gitlab.com/sugas182/screen-locker.git screen-locker
 $ cd screen-locker/ 
 $ cmake -B build 
 $ cmake --build build --target all -- -j4 
