@@ -13,7 +13,7 @@ $ git clone git@gitlab.com:sugas182/screen-locker.git screen-locker
 $ cd screen-locker/ 
 $ cmake -B build 
 $ cmake --build build --target all -- -j4 
-$ cmake --install build 
+$ cmake --install build
 ```
 
 ## Dependencies
