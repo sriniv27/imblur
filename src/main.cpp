@@ -23,6 +23,25 @@ namespace po = boost::program_options;
 /// https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 using namespace std;
 using namespace cv;
+
+struct ImageData {
+
+  Mat image_;
+  string filename;
+  string outfilename;
+  int rows;
+  int cols;
+  ImageData(string filename_, string outfilename_) {
+
+    this->filename = filename_;
+    this->outfilename = outfilename_;
+  };
+  Mat image() {
+    this->image_ = cv::imread(this->filename);
+    return image_;
+  }
+};
+
 void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows,
                   const int &cols);
 /**
@@ -46,6 +65,8 @@ int main(int ac, char *av[]) {
     int cols = 0;
     bool quietOutput = false;
     int numLoops;
+    ImageData imgInfo(filename, outfilename);
+
     po::options_description desc("helptext");
     desc.add_options()("help,h", "detailed help text")(
         "input-file,i", po::value<string>(&filename), "Input file name")(
