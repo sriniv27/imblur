@@ -5,7 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include(CPack)
 set(CMAKE_C_FLAGS "-Wall -Wextra -ggdb" )
 
-set(CMAKE_BUILD_TYPE "Debug")
+
 
 # Project & Language Options
 project(screen-lock C CXX )

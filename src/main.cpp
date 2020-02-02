@@ -23,25 +23,48 @@ namespace po = boost::program_options;
 /// https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 using namespace std;
 using namespace cv;
-
+/**
+ * @brief Container to hold user-facing information of the image.
+ *
+ */
 struct ImageData {
 
   Mat image_;
-  string filename;
-  string outfilename;
-  int rows;
-  int cols;
+  string filename;    /** File path of the input image */
+  string outfilename; /** File path of the output image */
+  int rows;           /** Number of rows of the smoothing kernel. */
+  int cols;           /** Number of columns of the smoothing kernel */
+  /**
+   * @brief Construct a new Image Data object
+   *
+   * @param filename_
+   * @param outfilename_
+   */
   ImageData(string filename_, string outfilename_) {
 
     this->filename = filename_;
+    this->image_ = image();
     this->outfilename = outfilename_;
   };
+  /**
+   * @brief load the image from the stored filename.
+   *
+   * @return Mat
+   */
   Mat image() {
     this->image_ = cv::imread(this->filename);
     return image_;
   }
 };
 
+/**
+ * @brief Apply a blurring operation to an image
+ *
+ * @param imgIn
+ * @param imgOut
+ * @param rows
+ * @param cols
+ */
 void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows,
                   const int &cols);
 /**

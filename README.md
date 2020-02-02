@@ -1,11 +1,20 @@
 # Screen-locker
-[![pipeline status](https://gitlab.com/sugas182/screen-locker/badges/master/pipeline.svg)](https://gitlab.com/sugas182/screen-locker/commits/master) 
+[![pipeline status -- master](https://gitlab.com/sugas182/screen-locker/badges/master/pipeline.svg)](https://gitlab.com/sugas182/screen-locker/commits/master) 
 
+[![pipeline status -- development](https://gitlab.com/sugas182/screen-locker/badges/development/pipeline.svg)](https://gitlab.com/sugas182/screen-locker/commits/development) 
 
 An incredibly heavy implementation of a program to take a screencap, blur it, and lock the session using said image as the lockscreen background. 
 
 The core program is outlined in main.cpp and provides the imblur executable. 
 ## Installation
+
+```
+$ git clone git@gitlab.com:sugas182/screen-locker.git screen-locker
+$ cd screen-locker/ 
+$ cmake -B build 
+$ cmake --build build --target all -- -j4 
+$ cmake --install build 
+```
 
 ## Dependencies
 1) `imlib2` to use the `imlib2_grab` function. Any drop-in replacement should be fine. We just need the image. 
@@ -16,6 +25,6 @@ The core program is outlined in main.cpp and provides the imblur executable.
         - OpenCV: `apt install libopencv-dev` 
 
 # This Project Uses: 
-## [spdlog](https://github.com/gabime/spdlog)
-A **fast**  c++ logging library. Install using your [package manager](https://github.com/gabime/spdlog#package-managers).
-![build dependency graph](./doc/deps.png)
+
+[spdlog](https://github.com/gabime/spdlog): A **fast**  c++ logging library. Install using your [package manager](https://github.com/gabime/spdlog#package-managers).
+![build dependency graph](../../doc/deps.png)
