@@ -32,8 +32,10 @@ doc:
     - cmake --build build --target Documentation
   after_script: 
     - mkdir -p public
+    - scripts/publish-to-public.sh
   artifacts:
     paths:
       - build/html/**
       - doc.md
       - public/
+
