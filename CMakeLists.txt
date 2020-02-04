@@ -1,22 +1,30 @@
-# CMake Level Configuration
+
+########################################################
+#####      CMake Level Configuration               #####
+########################################################
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(CPack)
 set(CMAKE_C_FLAGS "-Wall -Wextra -ggdb" )
 
-
-
-# Project & Language Options
+# Add a custom CMake Modules directory
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules
+                      ${CMAKE_MODULE_PATH})
+########################################################
+#####       Project & Language Options             #####
+########################################################
 project(screen-lock C CXX )
-## specify the C++ standard
+# specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CXX g++)
 set(CC gcc)
 
-# Package and Component Dependencies
+########################################################
+#####      Package and Component Dependencies      #####
+########################################################
 
 find_package( Boost
   COMPONENTS
@@ -37,7 +45,16 @@ find_package(Threads)
 
 set(CLANG_FORMAT_BIN_NAME clang-format-3.6)
 set(CLANG_FORMAT_EXCLUDE_PATTERNS  "build/" ${CMAKE_BINARY_DIR})
+
 find_package(ClangFormat)
+
+if(CLANG_FORMAT_BIN)
+        message("clang-format executable: ${CLANG_FORMAT_EXECUTABLE}")
+        message("clang-format version: ${CLANG_FORMAT_VERSION}")
+else()
+        message("clang-format executable not found")
+endif()
+
 
 set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/spdlog)
 
@@ -88,5 +105,7 @@ add_custom_target(graphviz ALL
   )
 
 
-# Final link phases of all targets
+########################################################
+#####      Final link phases of all targets        #####
+########################################################
 target_link_libraries(imblur PRIVATE spdlog::spdlog ${CMAKE_DL_LIBS} ${CMAKE_THREAD_LIBS_INIT} ${OpenCV_LIBS} ${Boost_LIBRARIES})
