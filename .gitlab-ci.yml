@@ -30,6 +30,8 @@ doc:
   script:
     - cmake -B build
     - cmake --build build --target Documentation
+  after_script: 
+    - mkdir -p public
   artifacts:
     paths:
       - build/html/**
