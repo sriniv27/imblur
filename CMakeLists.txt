@@ -49,7 +49,7 @@ set(CLANG_FORMAT_EXCLUDE_PATTERNS  "build/" ${CMAKE_BINARY_DIR})
 find_package(ClangFormat)
 
 if(CLANG_FORMAT_BIN)
-        message("clang-format executable: ${CLANG_FORMAT_EXECUTABLE}")
+        message("clang-format executable: ${CLANG_FORMAT_BIN}")
         message("clang-format version: ${CLANG_FORMAT_VERSION}")
 else()
         message("clang-format executable not found")
