@@ -32,16 +32,16 @@ struct ImageData {
 private:
   /** Internal store of the image matrix */
   Mat image_;
+  /** File path of the input image */
+  string filename_;
+
+  /** File path of the output image */
+  string outfilename_;
+  int rows_;
+  int cols_;
 
 public:
-  /** File path of the input image */
-  string filename;
-  /** File path of the output image */
-  string outfilename;
-  /** Number of rows of the smoothing kernel. */
-  int rows;
-  /** Number of columns of the smoothing kernel */
-  int cols;
+  Mat image() { return this->image_; }
   string filename() {
     auto fname = this->filename_;
     return fname;
@@ -61,22 +61,20 @@ public:
    * @param filename_
    * @param outfilename_
    */
-  ImageData(string filename_, string outfilename_) {
+  ImageData(string _filename, string _outfilename) {
 
-    this->filename = filename_;
-    this->image_ = image();
-    this->outfilename = outfilename_;
+    this->filename_ = _filename;
+    load_image();
+    this->outfilename_ = _outfilename;
   };
   /**
    * @brief load the image from the stored filename.
    *
    * @return Mat
    */
-  Mat image() {
+  void load_image() {
     // TODO: imread flags could be turned into a user configuration later maybe.
-    this->image_ = cv::imread(this->filename, cv::ImreadModes::IMREAD_UNCHANGED);
-
-    return image_;
+    this->image_ = cv::imread(this->filename_, cv::ImreadModes::IMREAD_UNCHANGED);
   }
 };
 
@@ -147,13 +145,10 @@ int main(int ac, char *av[]) {
 
     try {
       if (!quietOutput) {
-        console->info("in filename: {}", boost::lexical_cast<string>(imgInfo.filename));
-        console->info("out filename: {}", boost::lexical_cast<string>(imgInfo.outfilename));
+        console->info("in filename: {}", boost::lexical_cast<string>(imgInfo.filename()));
+        console->info("out filename: {}", boost::lexical_cast<string>(imgInfo.outfilename()));
       }
     } catch (const spdlog::spdlog_ex &currentException) {
-      cerr << currentException.what() << "\n";
-    }
-
       cerr << currentException.what() << "\n";
     }
 
@@ -201,6 +196,6 @@ void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows, const int &col
 }
 
 void blurFunction(ImageData imageObject) {
-  auto ksize = Size(imageObject.rows, imageObject.cols);
-  GaussianBlur(imageObject.image_, imageObject.image_, ksize, 1);
+  auto ksize = Size(imageObject.rows(), imageObject.cols());
+  GaussianBlur(imageObject.image(), imageObject.image(), ksize, 1);
 }
