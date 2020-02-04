@@ -34,3 +34,4 @@ doc:
     paths:
       - build/html/**
       - doc.md
+      - public/
