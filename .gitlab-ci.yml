@@ -37,5 +37,9 @@ doc:
     paths:
       - build/html/**
       - doc.md
+<<<<<<< Updated upstream
       - public/
+=======
+      
+>>>>>>> Stashed changes
 

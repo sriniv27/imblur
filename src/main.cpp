@@ -42,6 +42,18 @@ public:
   int rows;
   /** Number of columns of the smoothing kernel */
   int cols;
+  string filename() {
+    auto fname = this->filename_;
+    return fname;
+  }
+  string outfilename() {
+    auto oFname = this->outfilename_;
+    return oFname;
+  }
+  /** Number of rows of the smoothing kernel. */
+  int rows() { return this->rows_; };
+  /** Number of columns of the smoothing kernel */
+  int cols() { return this->cols_; };
 
   /**
    * @brief Construct a new Image Data object
@@ -139,6 +151,9 @@ int main(int ac, char *av[]) {
         console->info("out filename: {}", boost::lexical_cast<string>(imgInfo.outfilename));
       }
     } catch (const spdlog::spdlog_ex &currentException) {
+      cerr << currentException.what() << "\n";
+    }
+
       cerr << currentException.what() << "\n";
     }
 
