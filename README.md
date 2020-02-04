@@ -24,7 +24,10 @@ $ cmake --install build
         - boost : `apt install libboost-all-dev`
         - OpenCV: `apt install libopencv-dev` 
 
+![build dependency graph](../../doc/deps.png)
+
+
 # This Project Uses: 
 
 [spdlog](https://github.com/gabime/spdlog): A **fast**  c++ logging library. Install using your [package manager](https://github.com/gabime/spdlog#package-managers).
-![build dependency graph](../../doc/deps.png)
+

@@ -1,9 +1,10 @@
 /**
  * @file main.cpp
  * @author Suhas (sugas182@gmail.com)
- * @brief Blur an image given its path and kernel size parameters
- * @version 0.1
- * @date 2020-01-19
+ * @brief Blur an image given its path and kernel size parameters.
+ * A selected image is smoothed using OpenCV's implementation of a Gaussian
+ * Blur. You can specify the size of the smoothing kernel m-by-n.
+ * @version 1.1
  *
  * @copyright Copyright (c) 2020
  *
@@ -29,11 +30,17 @@ using namespace cv;
  */
 struct ImageData {
 
+  /** Internal store of the image matrix */
   Mat image_;
-  string filename;    /** File path of the input image */
-  string outfilename; /** File path of the output image */
-  int rows;           /** Number of rows of the smoothing kernel. */
-  int cols;           /** Number of columns of the smoothing kernel */
+  /** File path of the input image */
+  string filename;
+  /** File path of the output image */
+  string outfilename;
+  /** Number of rows of the smoothing kernel. */
+  int rows;
+  /** Number of columns of the smoothing kernel */
+  int cols;
+
   /**
    * @brief Construct a new Image Data object
    *
@@ -52,7 +59,9 @@ struct ImageData {
    * @return Mat
    */
   Mat image() {
-    this->image_ = cv::imread(this->filename);
+    // TODO: imread flags could be turned into a user configuration later maybe.
+    this->image_ = cv::imread(this->filename, cv::ImreadModes::IMREAD_UNCHANGED);
+
     return image_;
   }
 };
@@ -65,8 +74,9 @@ struct ImageData {
  * @param rows
  * @param cols
  */
-void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows,
-                  const int &cols);
+void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows, const int &cols);
+void blurFunction(ImageData imageObj);
+
 /**
  *
  * @brief imblur takes an image along with kernel size parameters and
@@ -88,21 +98,18 @@ int main(int ac, char *av[]) {
     int cols = 0;
     bool quietOutput = false;
     int numLoops;
-    ImageData imgInfo(filename, outfilename);
 
     po::options_description desc("helptext");
-    desc.add_options()("help,h", "detailed help text")(
-        "input-file,i", po::value<string>(&filename), "Input file name")(
-        "output-file,o",
-        po::value<string>(&outfilename)->default_value("output.png"),
-        "Output file name")("rows,r", po::value<int>(&rows)->default_value(5),
+    desc.add_options()("help,h", "detailed help text")("input-file,i", po::value<string>(&filename),
+                                                       "Input file name")(
+        "output-file,o", po::value<string>(&outfilename)->default_value("output.png"),
+        "Output file name")("rows,m", po::value<int>(&rows)->default_value(5),
                             "number of rows in the smoothing kernel")(
-        "cols,c", po::value<int>(&cols)->default_value(3),
+        "cols,n", po::value<int>(&cols)->default_value(3),
         "number of columns in the smoothing kernel")(
         "quiet,q", po::value<bool>(&quietOutput)->default_value(false),
-        "Quiet (no print to stdout)")(
-        "numloops,l", po::value<int>(&numLoops)->default_value(1),
-        "Number of times to run smoothing operation");
+        "Quiet (no print to stdout)")("numloops,l", po::value<int>(&numLoops)->default_value(1),
+                                      "Number of times to run smoothing operation");
     po::variables_map vm;
     po::store(po::parse_command_line(ac, av, desc), vm);
 
@@ -122,16 +129,12 @@ int main(int ac, char *av[]) {
       quietOutput = true;
     }
 
-    image = imread(
-        filename,
-        cv::ImreadModes::IMREAD_UNCHANGED); /// TODO: imread flags could
-                                            /// be turned into a user
-                                            /// configuration later maybe.
+    ImageData imgInfo(filename, outfilename);
+
     try {
       if (!quietOutput) {
-        console->info("in filename: {}", boost::lexical_cast<string>(filename));
-        console->info("out filename: {}",
-                      boost::lexical_cast<string>(outfilename));
+        console->info("in filename: {}", boost::lexical_cast<string>(imgInfo.filename));
+        console->info("out filename: {}", boost::lexical_cast<string>(imgInfo.outfilename));
       }
     } catch (const spdlog::spdlog_ex &currentException) {
       cerr << currentException.what() << "\n";
@@ -140,11 +143,13 @@ int main(int ac, char *av[]) {
     auto ctr = 0;
     Mat output_image_data;
     while (ctr < numLoops) {
-      blurFunction(image, image, rows, cols);
+      // blurFunction(image, image, rows, cols);
+      blurFunction(imgInfo);
       ctr++;
     }
     imwrite(outfilename, image);
     return 0;
+
   } catch (po::error &e) {
     cerr << "Error in input: " << e.what() << "\n";
     cout << boost::stacktrace::stacktrace();
@@ -173,8 +178,12 @@ int main(int ac, char *av[]) {
  * @param rows
  * @param cols
  */
-void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows,
-                  const int &cols) {
+void blurFunction(const Mat &imgIn, Mat &imgOut, const int &rows, const int &cols) {
   auto ksize = Size(rows, cols);
   GaussianBlur(imgIn, imgOut, ksize, 1);
+}
+
+void blurFunction(ImageData imageObject) {
+  auto ksize = Size(imageObject.rows, imageObject.cols);
+  GaussianBlur(imageObject.image_, imageObject.image_, ksize, 1);
 }
