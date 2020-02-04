@@ -103,6 +103,11 @@ add_custom_target(graphviz ALL
     ${PROJECT_SOURCE_DIR}
 
   )
+  
+  add_custom_command(
+    TARGET Documentation
+  COMMAND scripts/publish-to-public.sh
+  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 
 ########################################################

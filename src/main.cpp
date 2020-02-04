@@ -29,9 +29,11 @@ using namespace cv;
  *
  */
 struct ImageData {
-
+private:
   /** Internal store of the image matrix */
   Mat image_;
+
+public:
   /** File path of the input image */
   string filename;
   /** File path of the output image */
