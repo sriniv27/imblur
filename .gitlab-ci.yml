@@ -8,8 +8,11 @@ build:
   stage: build
   # instead of calling g++ directly you can also use some build toolkit like make
   # install the necessary build tools when needed
-  
-     
+
+  before_script:
+    - git submodule sync --recursive
+    - git submodule update --init --recursive
+    - cd spdlog && cmake -B build && cmake --build build --target install -- -j4
   script:
     - cmake -B build
     - cmake --build build
@@ -20,13 +23,17 @@ build:
 
 doc:
   stage: build
-  before_script: 
-    - apt install -y pandoc 
+  before_script:
+    - git submodule sync --recursive
+    - git submodule update --init --recursive
+
   script:
     - cmake -B build
     - cmake --build build --target Documentation
-    - pandoc build/html/index.html -f html -t markdown -s -o doc.md
-  artifacts: 
-   paths: 
-    - build/html/**
-    - doc.md
+  after_script: 
+    - mkdir -p public
+    - scripts/publish-to-public.sh
+  artifacts:
+    paths:
+      - build/html/**
+      - doc.md

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-pushd .
-imlib2_grab  screenshot.png
-
-./imblur -i screenshot.png -o screenshot.png -r 21 -c 9 -q yes
-i3lock -t -i 'screenshot.png'
-# feh screenshot.png
-popd || exit
