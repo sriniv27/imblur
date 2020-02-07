@@ -103,7 +103,7 @@ int main(int ac, char *av[]) {
   auto console = spdlog::stdout_logger_mt("console");
   auto err_logger = spdlog::stderr_logger_mt("stderr");
   try {
-    Mat image;
+
     string filename;
     string outfilename;
     int rows = 0;
@@ -142,7 +142,8 @@ int main(int ac, char *av[]) {
     }
 
     ImageData imgInfo(filename, outfilename);
-
+    imgInfo.load_image();
+    auto image = imgInfo.image();
     try {
       if (!quietOutput) {
         console->info("in filename: {}", boost::lexical_cast<string>(imgInfo.filename()));
@@ -155,8 +156,8 @@ int main(int ac, char *av[]) {
     auto ctr = 0;
     Mat output_image_data;
     while (ctr < numLoops) {
-      // blurFunction(image, image, rows, cols);
-      blurFunction(imgInfo);
+      blurFunction(image, image, rows, cols);
+      // blurFunction(imgInfo);
       ctr++;
     }
     imwrite(outfilename, image);
