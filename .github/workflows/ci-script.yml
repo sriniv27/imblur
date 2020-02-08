@@ -16,6 +16,13 @@ jobs:
           cmake -B build
           cmake --build build --target all -j4
           cmake --build build --target Documentation -j4
+      - name: Cache Outputs
+        uses: actions/cache
+        with:
+          path: build
+          key: build
+          restore-keys: build 
+
   setup-docs:
     needs: build
     runs-on: ubuntu-latest
