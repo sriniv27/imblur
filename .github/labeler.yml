@@ -1,5 +1,6 @@
 documentation:
   - docs/**
+  - wiki/**
   - README.md
 
 build system:
@@ -11,3 +12,6 @@ scripts:
   
 code:
   - src/**
+
+publish:
+  - docs/**
