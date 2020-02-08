@@ -6,6 +6,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: before_script
         run: |
+            sudo apt-get update
             sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client
             git submodule sync --recursive &&
             git submodule update --init --recursive &&
