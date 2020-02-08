@@ -9,5 +9,5 @@ scripts:
   - scripts/**
   
   
- code:
+code:
   - src/**
