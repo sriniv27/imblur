@@ -23,8 +23,10 @@ jobs:
           restore-keys: build 
 
   setup-docs:
+    needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: wiki publish
         run: |
           sudo apt-get update

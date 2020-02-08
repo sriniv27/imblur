@@ -1,0 +1,13 @@
+documentation:
+  - ./doc/**/*
+  - ./README.md
+
+build system:
+  - .CMakeLists.txt
+  - ./**/*.sh
+scripts:
+  - scripts/**
+  
+  
+code:
+  - src/**
