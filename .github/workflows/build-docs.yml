@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - master
+      - development
+  jobs:
+    setup-docs:
+      uses: actions/checkout@v2
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: wiki publish
+          run: |
+            sudo apt-get update
+            git submodule sync --recursive 
+            git submodule update --init --recursive
+            sudo apt-get install -y npm
+            sudo npm install -g moxygen
+            git submodule sync --recursive 
+            git submodule update --init --recursive
+            cd doc/
+            ./automate_this_directory.sh
