@@ -25,6 +25,7 @@ jobs:
   setup-docs:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: wiki publish
         run: |
           sudo apt-get update
