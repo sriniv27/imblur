@@ -4,7 +4,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/docker-build-develop
       - name: before_script
         run: |
             sudo apt-get update
