@@ -7,7 +7,8 @@ jobs:
       - name: before_script
         run: |
             sudo apt-get update
-            sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client
+            sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client npm node
+            npm install -g moxygen
             git submodule sync --recursive 
             git submodule update --init --recursive 
       - name: script
@@ -17,6 +18,7 @@ jobs:
           cmake --build build --target Documentation -j4
       - name: setup docs 
         run: | 
-          cd doc/
+          
+        cd doc/
           ./automate_this_directory.sh
           
