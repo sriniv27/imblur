@@ -105,12 +105,6 @@ set(DOXYGEN_USE_MDFILE_AS_MAINPAGE YES)
     Documentation
     ${PROJECT_SOURCE_DIR}
   )
-  
-  add_custom_command(
-  TARGET Documentation
-  COMMAND scripts/publish-to-public.sh
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
-
 
 ########################################################
 #####      Final link phases of all targets        #####
