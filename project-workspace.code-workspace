@@ -51,5 +51,6 @@
       "*.tcc": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "LLVM",
+    "astyle.astylerc": ./astylerc
   }
 }

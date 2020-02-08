@@ -2,5 +2,5 @@
 pushd .
 mkdir -p public/
 cp -r build/html/** public/
-
+cp build/deps.png public/
 popd || exit
