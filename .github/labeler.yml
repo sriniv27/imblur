@@ -4,4 +4,4 @@ Documentation:
 
 Build System:
   - ./**/CMakeLists.txt
-  - *.sh
+  - ./**/*.sh
