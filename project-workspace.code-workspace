@@ -1,7 +1,12 @@
 {
   "folders": [
     {
-      "path": "."
+      "path": ".",
+      "name": "imblur"
+    },
+    {
+      "path": ".github",
+      "name": "ci"
     }
   ],
   "launch": {
@@ -17,7 +22,6 @@
         "environment": [],
         "externalConsole": false,
         "MIMode": "gdb",
-
         "setupCommands": [
           {
             "description": "Enable pretty-printing for gdb",
@@ -39,7 +43,12 @@
     "cmake.generator": "Ninja",
     "cmake.configureOnOpen": true,
     "cmake.debugConfig": {
-      "args": ["-iscreencap.png", "-s1 69", "-s2 33"]
+      "args": [
+        "-iscreencap.png",
+        "-m3",
+        "-n5",
+        "-l3"
+      ]
     },
     "docker.defaultRegistryPath": "registry.gitlab.com/sugas182",
     "C_Cpp.loggingLevel": "Information",
@@ -47,6 +56,6 @@
       "*.tcc": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "LLVM",
-    
+    "astyle.astylerc": "./astylerc"
   }
 }

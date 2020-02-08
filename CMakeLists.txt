@@ -91,17 +91,19 @@ add_custom_target(graphviz ALL
   COMMAND cp ${CMAKE_BINARY_DIR}/imblur ${PROJECT_SOURCE_DIR}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
-
-  set(DOXYGEN_DENERATE_MAN NO)
-  set(DOXYGEN_GENERATE_HTML YES)
-  set(DOXYGEN_GENERATE_LATEX YES)
-  set(DOXYGEN_GENERATE_XML NO)
-  set(DOXYGEN_GENERATE_TREEVIEW YES)
-  set(DOXYGEN_USE_MDFILE_AS_MAINPAGE YES)
+  ########################################################
+  #####      TARGET: Documentation                   #####
+  ########################################################
+            
+set(DOXYGEN_DENERATE_MAN NO)
+set(DOXYGEN_GENERATE_HTML YES)
+set(DOXYGEN_GENERATE_LATEX YES)
+set(DOXYGEN_GENERATE_XML NO)
+set(DOXYGEN_GENERATE_TREEVIEW YES)
+set(DOXYGEN_USE_MDFILE_AS_MAINPAGE YES)  
   doxygen_add_docs(
     Documentation
     ${PROJECT_SOURCE_DIR}
-
   )
   
   add_custom_command(

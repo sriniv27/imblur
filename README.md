@@ -1,7 +1,7 @@
 # Screen-locker
-**Pipeline status -- master**[![pipeline status -- master](https://gitlab.com/sugas182/screen-locker/badges/master/pipeline.svg)](https://gitlab.com/sugas182/screen-locker/commits/master) 
+**Pipeline status -- master**![.github/workflows/ci-script.yml](https://github.com/sriniv27/imblur/workflows/.github/workflows/ci-script.yml/badge.svg?branch=master)
 
-**pipeline status -- development**[![pipeline status -- development](https://gitlab.com/sugas182/screen-locker/badges/development/pipeline.svg)](https://gitlab.com/sugas182/screen-locker/commits/development) 
+**pipeline status -- development**![.github/workflows/ci-script.yml](https://github.com/sriniv27/imblur/workflows/.github/workflows/ci-script.yml/badge.svg?branch=development)
 
 An incredibly heavy implementation of a program to take a screencap, blur it, and lock the session using said image as the lockscreen background. 
 
