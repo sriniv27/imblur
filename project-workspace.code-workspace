@@ -1,7 +1,12 @@
 {
   "folders": [
     {
-      "path": "."
+      "path": ".",
+      "name": "imblur"
+    },
+    {
+      "path": ".github",
+      "name": "ci"
     }
   ],
   "launch": {
@@ -51,6 +56,6 @@
       "*.tcc": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "LLVM",
-    "astyle.astylerc": ./astylerc
+    "astyle.astylerc": "./astylerc"
   }
 }
