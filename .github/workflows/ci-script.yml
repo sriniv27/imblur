@@ -14,8 +14,8 @@ jobs:
         cmake -B build
         cmake --build build
   
-    doc:
-
+  doc:
+    steps:
       - name: before_script
         run:
           git submodule sync --recursive
