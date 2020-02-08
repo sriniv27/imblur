@@ -36,5 +36,5 @@ jobs:
           sudo npm install -g moxygen
           git submodule sync --recursive 
           git submodule update --init --recursive
-          cd doc/
+          cd docs/
           ./automate_this_directory.sh
