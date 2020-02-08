@@ -1,0 +1,7 @@
+Documentation:
+  - doc/**/*
+  - ./**/*.md
+
+Build System:
+  - ./**/CMakeLists.txt
+  - ./**/*.sh
