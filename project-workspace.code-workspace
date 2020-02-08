@@ -7,6 +7,9 @@
     {
       "path": ".github",
       "name": "ci"
+    },
+    {
+      "path": "doc"
     }
   ],
   "launch": {
