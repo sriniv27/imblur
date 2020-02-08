@@ -17,7 +17,7 @@ jobs:
           cmake --build build --target all -j4
           cmake --build build --target Documentation -j4
       - name: Cache Outputs
-        uses: actions/cache
+        uses: actions/cache@v1
         with:
           path: build
           key: build
