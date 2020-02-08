@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+pushd .
+<<<<<<< HEAD
+cp -r build/html/** public/
+
+=======
+mkdir -p public/
+cp -r build/html/** public/
+cp build/deps.png public/
+>>>>>>> development
+popd || exit

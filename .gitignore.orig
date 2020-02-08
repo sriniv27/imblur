@@ -1,0 +1,29 @@
+screenshot.png
+screenshot.png.png
+testfile.png
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
+build/**
+.dir-locals.el
+screenshot_2.png
+screencap.png
+output.png
+outImage.png
+out.png
+Mon 13 Jan 2020 10:14:41 PM EST-screenshot.png
+logs.log
+imblur
+TAGS
+project-workspace.code-workspace
+.devcontainer/**
+spdlog-1.5.0/**
+!build/doc_build.md
+public/**
+
+<<<<<<< HEAD
+.clang-format
+=======
+.clang-formatastylerc
+astylerc
+>>>>>>> development

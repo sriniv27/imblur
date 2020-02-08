@@ -209,51 +209,50 @@ int main ( int ac, char *av[] )
             return 0;
 
         }
+        catch ( po::error &e )
+        {
+            cerr << "Error in input: " << e.what() << "\n";
+            cout << boost::stacktrace::stacktrace();
+            return 1;
+
+        }
+        catch ( const spdlog::spdlog_ex &ex )
+        {
+            cerr << "Runtime Error: \n\n" << ex.what() << "\n";
+
+            cerr << boost::stacktrace::stacktrace();
+            return 2;
+
+        }
+        catch ( ... )
+        {
+            cerr << "EXCEPTION UNKOWN!!";
+
+            cerr << boost::stacktrace::stacktrace();
+            return 3;
+        }
+
+        return 0;
     }
-    catch ( po::error &e )
+
+    /**
+     * @brief Wrapper around cv::GaussianBlur that takes the address of the image
+     * being manipulated along with directed kernel matrix size paramter and
+     * applies a GaussianBlur on it.
+     *
+     * @param imgIn
+     * @param imgOut
+     * @param rows
+     * @param cols
+     */
+    void blurFunction ( const Mat & imgIn, Mat & imgOut, const int &rows, const int &cols )
     {
-        cerr << "Error in input: " << e.what() << "\n";
-        cout << boost::stacktrace::stacktrace();
-        return 1;
-
+        auto ksize = Size ( rows, cols );
+        GaussianBlur ( imgIn, imgOut, ksize, 1 );
     }
-    catch ( const spdlog::spdlog_ex &ex )
+
+    void blurFunction ( ImageData imageObject )
     {
-        cerr << "Runtime Error: \n\n" << ex.what() << "\n";
-
-        cerr << boost::stacktrace::stacktrace();
-        return 2;
-
+        auto ksize = Size ( imageObject.rows(), imageObject.cols() );
+        GaussianBlur ( imageObject.image(), imageObject.image(), ksize, 1 );
     }
-    catch ( ... )
-    {
-        cerr << "EXCEPTION UNKOWN!!";
-
-        cerr << boost::stacktrace::stacktrace();
-        return 3;
-    }
-
-    return 0;
-}
-
-/**
- * @brief Wrapper around cv::GaussianBlur that takes the address of the image
- * being manipulated along with directed kernel matrix size paramter and
- * applies a GaussianBlur on it.
- *
- * @param imgIn
- * @param imgOut
- * @param rows
- * @param cols
- */
-void blurFunction ( const Mat &imgIn, Mat &imgOut, const int &rows, const int &cols )
-{
-    auto ksize = Size ( rows, cols );
-    GaussianBlur ( imgIn, imgOut, ksize, 1 );
-}
-
-void blurFunction ( ImageData imageObject )
-{
-    auto ksize = Size ( imageObject.rows(), imageObject.cols() );
-    GaussianBlur ( imageObject.image(), imageObject.image(), ksize, 1 );
-}
