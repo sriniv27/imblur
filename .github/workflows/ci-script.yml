@@ -16,7 +16,7 @@ jobs:
           cmake -B build
           cmake --build build --target all -j4
           cmake --build build --target Documentation -j4
-  setup docs:
+  setup-docs:
     runs-on: ubuntu-latest
     steps:
       - name: wiki publish
