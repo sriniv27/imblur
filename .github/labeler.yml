@@ -1,6 +1,6 @@
 Documentation:
   - doc/**/*
-  - *.md
+  - ./**/*.md
 
 Build System:
   - ./**/CMakeLists.txt
