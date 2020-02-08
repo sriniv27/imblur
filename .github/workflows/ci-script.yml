@@ -7,10 +7,8 @@ jobs:
       - name: before_script
         run: |
           sudo apt-get update
-          sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client npm
-          sudo npm install -g moxygen
-          git submodule sync --recursive 
-          git submodule update --init --recursive
+          sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client
+          
       - name: script
         run: |
           cmake -B build
@@ -24,10 +22,13 @@ jobs:
           restore-keys: build 
 
   setup-docs:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: wiki publish
         run: |
+          sudo apt install -y npm
+          sudo npm install -g moxygen
+          git submodule sync --recursive 
+          git submodule update --init --recursive
           cd doc/
           ./automate_this_directory.sh
