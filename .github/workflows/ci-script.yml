@@ -15,6 +15,7 @@ jobs:
           cmake --build build
   
   doc:
+    runs-on: ubuntu-latest
     steps:
       - name: before_script
         run:
