@@ -1,39 +1,30 @@
-# This file is a template, and might need editing before it works on your project.
-# use the official gcc image, based on debian
-# can use verions as well, like gcc:5.2
-# see https://hub.docker.com/_/gcc/
-image: registry.gitlab.com/sugas182/screen-locker
-
+on: [push]
 build:
-  stage: build
-  # instead of calling g++ directly you can also use some build toolkit like make
-  # install the necessary build tools when needed
-
-  before_script:
-    - git submodule sync --recursive
-    - git submodule update --init --recursive
-    - cd spdlog && cmake -B build && cmake --build build --target install -- -j4
-  script:
-    - cmake -B build
-    - cmake --build build
-  artifacts:
-    paths:
-      - build/imblur
-      # depending on your build setup it's most likely a good idea to cache outputs to reduce the build time
-
+  runs-on: ubuntu-latest
+  - uses: actions/checkout@v2
+  - name: before_script
+    run:
+        git submodule sync --recursive
+        git submodule update --init --recursive
+        cd spdlog && cmake -B build && cmake --build build --target install -- -j4
+  - name: script
+    run:
+       cmake -B build
+       cmake --build build
+  
 doc:
-  stage: build
-  before_script:
-    - git submodule sync --recursive
-    - git submodule update --init --recursive
 
-  script:
-    - cmake -B build
-    - cmake --build build --target Documentation
-  after_script: 
-    - mkdir -p public
-    - scripts/publish-to-public.sh
-  artifacts:
-    paths:
-      - build/html/**
-      - doc.md
+  - name: before_script
+    run:
+      git submodule sync --recursive
+      git submodule update --init --recursive
+
+  - name: script
+    run:
+       cmake -B build
+       cmake --build build --target Documentation
+  - name: after_script
+    run:
+       mkdir -p public
+       scripts/publish-to-public.sh
+  
