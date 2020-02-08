@@ -18,7 +18,6 @@ jobs:
           cmake --build build --target Documentation -j4
       - name: setup docs 
         run: | 
-          
-        cd doc/
+          cd doc/
           ./automate_this_directory.sh
           
