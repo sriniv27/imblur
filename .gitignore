@@ -22,3 +22,4 @@ spdlog-1.5.0/**
 public/**
 
 .clang-formatastylerc
+astylerc
