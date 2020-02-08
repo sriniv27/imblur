@@ -1,30 +1,31 @@
 on: [push]
-build:
-  runs-on: ubuntu-latest
-  - uses: actions/checkout@v2
-  - name: before_script
-    run:
-        git submodule sync --recursive
-        git submodule update --init --recursive
-        cd spdlog && cmake -B build && cmake --build build --target install -- -j4
-  - name: script
-    run:
-       cmake -B build
-       cmake --build build
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - name: before_script
+      run:
+          git submodule sync --recursive
+          git submodule update --init --recursive
+          cd spdlog && cmake -B build && cmake --build build --target install -- -j4
+    - name: script
+      run:
+        cmake -B build
+        cmake --build build
   
-doc:
+    doc:
 
-  - name: before_script
-    run:
-      git submodule sync --recursive
-      git submodule update --init --recursive
+      - name: before_script
+        run:
+          git submodule sync --recursive
+          git submodule update --init --recursive
 
-  - name: script
-    run:
-       cmake -B build
-       cmake --build build --target Documentation
-  - name: after_script
-    run:
-       mkdir -p public
-       scripts/publish-to-public.sh
-  
+      - name: script
+        run:
+          cmake -B build
+          cmake --build build --target Documentation
+      - name: after_script
+        run:
+          mkdir -p public
+          scripts/publish-to-public.sh
