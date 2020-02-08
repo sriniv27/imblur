@@ -13,16 +13,5 @@ jobs:
       - name: script
         run: |
           cmake -B build
-          cmake --build build
-  
-  doc:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: script
-        run: |
-          cmake --build build --target Documentation
-      - name: after_script
-        run: | 
-          mkdir -p public
-          scripts/publish-to-public.sh
+          cmake --build build --target all -j4
+          cmake --build build --target Documentation -j4
