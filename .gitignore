@@ -23,3 +23,5 @@ public/**
 
 .clang-format
 astylerc
+formatbackup-*
+*.orig
