@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 pushd .
 mkdir -p public/
-cp -r build/html/** public/
-cp build/deps.png public/
+cp -r build/xml/** doc/
+cp build/deps.png doc/
 popd || exit

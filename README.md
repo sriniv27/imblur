@@ -24,7 +24,7 @@ $ cmake --install build
         - boost : `apt install libboost-all-dev`
         - OpenCV: `apt install libopencv-dev` 
 
-![build dependency graph](../../doc/deps.png)
+![build dependency graph](xml/deps.png)
 
 
 # This Project Uses: 
