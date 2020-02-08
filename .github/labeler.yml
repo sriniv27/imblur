@@ -1,7 +1,13 @@
 documentation:
-  - doc/**/*
-  - ./**/*.md
+  - ./doc/**/*
+  - ./README.md
 
 build system:
-  - ./**/CMakeLists.txt
+  - .CMakeLists.txt
   - ./**/*.sh
+scripts:
+  - scripts/**
+  
+  
+ code:
+  - src/**
