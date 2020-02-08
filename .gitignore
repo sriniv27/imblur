@@ -20,7 +20,6 @@ project-workspace.code-workspace
 spdlog-1.5.0/**
 !build/doc_build.md
 public/**
-
 .clang-format
 astylerc
 formatbackup-*
