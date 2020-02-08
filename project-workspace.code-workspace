@@ -3,13 +3,6 @@
     {
       "path": ".",
       "name": "imblur"
-    },
-    {
-      "path": ".github",
-      "name": "ci"
-    },
-    {
-      "path": "doc"
     }
   ],
   "launch": {
