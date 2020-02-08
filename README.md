@@ -1,7 +1,9 @@
 # Screen-locker
-**Pipeline status -- master**![.github/workflows/ci-script.yml](https://github.com/sriniv27/imblur/workflows/.github/workflows/ci-script.yml/badge.svg?branch=master)
+**Pipeline status -- master**  
+![.github/workflows/ci-script.yml](https://github.com/sriniv27/imblur/workflows/.github/workflows/ci-script.yml/badge.svg?branch=master)
 
-**pipeline status -- development**![.github/workflows/ci-script.yml](https://github.com/sriniv27/imblur/workflows/.github/workflows/ci-script.yml/badge.svg?branch=development)
+**pipeline status -- development**  
+![.github/workflows/ci-script.yml](https://github.com/sriniv27/imblur/workflows/.github/workflows/ci-script.yml/badge.svg?branch=development)
 
 An incredibly heavy implementation of a program to take a screencap, blur it, and lock the session using said image as the lockscreen background. 
 
@@ -24,7 +26,7 @@ $ cmake --install build
         - boost : `apt install libboost-all-dev`
         - OpenCV: `apt install libopencv-dev` 
 
-![build dependency graph](xml/deps.png)
+![build dependency graph](./build/deps.png)
 
 
 # This Project Uses: 
