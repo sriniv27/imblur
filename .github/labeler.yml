@@ -1,0 +1,17 @@
+documentation:
+  - docs/**
+  - wiki/**
+  - README.md
+
+build system:
+  - CMakeLists.txt
+  - ./**/*.sh
+scripts:
+  - scripts/**
+  
+  
+code:
+  - src/**
+
+publish:
+  - docs/**

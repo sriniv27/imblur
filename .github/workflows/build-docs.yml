@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - master
+      - development
+  pull_request:
+    branches:
+      - master
+      - development
+jobs:
+  setup-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: wiki publish
+        run: |
+          sudo apt-get update
+          sudo apt-get update
+          sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev
+          git submodule sync --recursive 
+          git submodule update --init --recursive
+          sudo apt-get install -y npm
+          sudo npm install -g moxygen
+          git submodule sync --recursive 
+          git submodule update --init --recursive
+          cmake -B build
+          cmake --build build -t Documentation -j4
+          cd docs/
+          ./automate_this_directory.sh

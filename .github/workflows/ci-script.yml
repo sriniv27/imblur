@@ -1,17 +1,31 @@
-on: [push]
-jobs: 
+on:
+  push:
+    branches:
+      - master
+      - development
+  pull_request:
+    branches:
+      - master
+      - development
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: before_script
         run: |
-            sudo apt-get update
-            sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client
-            git submodule sync --recursive 
-            git submodule update --init --recursive 
+          sudo apt-get update
+          sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev graphviz doxygen git zip libspdlog-dev openssh-client
+          git submodule sync --recursive 
+          git submodule update --init --recursive
       - name: script
         run: |
           cmake -B build
           cmake --build build --target all -j4
           cmake --build build --target Documentation -j4
+      - name: Cache Outputs
+        uses: actions/cache@v1
+        with:
+          path: build
+          key: build
+          restore-keys: build 

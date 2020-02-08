@@ -96,21 +96,15 @@ add_custom_target(graphviz ALL
   ########################################################
             
 set(DOXYGEN_DENERATE_MAN NO)
-set(DOXYGEN_GENERATE_HTML YES)
+set(DOXYGEN_GENERATE_HTML NO)
 set(DOXYGEN_GENERATE_LATEX YES)
-set(DOXYGEN_GENERATE_XML NO)
+set(DOXYGEN_GENERATE_XML YES)
 set(DOXYGEN_GENERATE_TREEVIEW YES)
 set(DOXYGEN_USE_MDFILE_AS_MAINPAGE YES)  
   doxygen_add_docs(
     Documentation
     ${PROJECT_SOURCE_DIR}
   )
-  
-  add_custom_command(
-    TARGET Documentation
-  COMMAND scripts/publish-to-public.sh
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
-
 
 ########################################################
 #####      Final link phases of all targets        #####
