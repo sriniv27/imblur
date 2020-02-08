@@ -21,5 +21,7 @@ jobs:
           sudo npm install -g moxygen
           git submodule sync --recursive 
           git submodule update --init --recursive
+          cmake -B build
+          cmake --build build -t Documentation -j4
           cd docs/
           ./automate_this_directory.sh
