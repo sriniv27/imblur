@@ -15,6 +15,8 @@ jobs:
       - name: wiki publish
         run: |
           sudo apt-get update
+          sudo apt-get update
+          sudo apt-get -y install clang cmake libboost-all-dev libopencv-dev 
           git submodule sync --recursive 
           git submodule update --init --recursive
           sudo apt-get install -y npm
