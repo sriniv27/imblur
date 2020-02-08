@@ -24,7 +24,8 @@ jobs:
 
   setup-docs:
     runs-on: ubuntu-latest
-    steps:
+        needs: build
+        steps:
       - uses: actions/checkout@v2
       - name: wiki publish
         run: |
