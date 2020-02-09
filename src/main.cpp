@@ -18,11 +18,11 @@
 #include <opencv2/imgproc.hpp>
 #include <spdlog/sinks/stdout_sinks.h>
 #include <spdlog/spdlog.h>
+
 /// see here for documentation on using boost::program_options:
 /// https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
 namespace po = boost::program_options;
-/// see here for doc:
-/// https://www.boost.org/doc/libs/1_64_0/doc/html/program_options.html
+
 using namespace std;
 using namespace cv;
 /**
@@ -31,66 +31,80 @@ using namespace cv;
  */
 struct ImageData
 {
-    private:
-        /** Internal store of the image matrix */
-        Mat image_;
-        /** File path of the input image */
-        string filename_;
+private:
+    /** Internal store of the image matrix */
+    Mat image_;
+    /** File path of the input image */
+    string filename_;
 
-        /** File path of the output image */
-        string outfilename_;
-        int rows_;
-        int cols_;
+    /** File path of the output image */
+    string outfilename_;
+    int rows_;
+    int cols_;
 
-    public:
-        Mat image()
-        {
-            return this->image_;
-        }
-        string filename()
-        {
-            auto fname = this->filename_;
-            return fname;
-        }
-        string outfilename()
-        {
-            auto oFname = this->outfilename_;
-            return oFname;
-        }
-        /** Number of rows of the smoothing kernel. */
-        int rows()
-        {
-            return this->rows_;
-        };
-        /** Number of columns of the smoothing kernel */
-        int cols()
-        {
-            return this->cols_;
-        };
 
-        /**
-         * @brief Construct a new Image Data object
-         *
-         * @param filename_
-         * @param outfilename_
-         */
-        ImageData ( string _filename, string _outfilename )
-        {
+public:
+    /**
+     * @brief Return the size of the smoothing kernel matrix as a cv::Size using the kernels row and column psecificia
+     *
+     * @return cv::Size
+     */
+    cv::Size kernelSize() {
+        return cv::Size(this->rows_, this->cols_);
+    }
+    /**
+     * @brief Provide the cv::Mat representation of the stored image.
+     *
+     * @return Mat
+     */
+    Mat image()
+    {
+        return this->image_;
+    }
+    string filename()
+    {
+        auto fname = this->filename_;
+        return fname;
+    }
+    string outfilename()
+    {
+        auto oFname = this->outfilename_;
+        return oFname;
+    }
+    /** Number of rows of the smoothing kernel. */
+    int rows()
+    {
+        return this->rows_;
+    };
+    /** Number of columns of the smoothing kernel */
+    int cols()
+    {
+        return this->cols_;
+    };
 
-            this->filename_ = _filename;
-            load_image();
-            this->outfilename_ = _outfilename;
-        };
-        /**
-         * @brief load the image from the stored filename.
-         *
-         * @return Mat
-         */
-        void load_image()
-        {
-            // TODO: imread flags could be turned into a user configuration later maybe.
-            this->image_ = cv::imread ( this->filename_, cv::ImreadModes::IMREAD_UNCHANGED );
-        }
+    /**
+     * @brief Construct a new Image Data object
+     *
+     * @param filename_
+     * @param outfilename_
+     */
+    ImageData ( string _filename, string _outfilename )
+    {
+
+        this->filename_ = _filename;
+        load_image();
+        this->outfilename_ = _outfilename;
+    };
+    /**
+     * @brief load the image from the stored filename.
+     *
+     * @return Mat
+     */
+    void load_image()
+    {
+        // TODO: imread flags could be turned into a user configuration later maybe.
+        this->image_ = cv::imread ( this->filename_, cv::ImreadModes::IMREAD_UNCHANGED );
+    }
 };
 
 /**
@@ -255,5 +269,5 @@ void blurFunction ( const Mat &imgIn, Mat &imgOut, const int &rows, const int &c
 void blurFunction ( ImageData imageObject )
 {
     auto ksize = Size ( imageObject.rows(), imageObject.cols() );
-    GaussianBlur ( imageObject.image(), imageObject.image(), ksize, 1 );
+    GaussianBlur ( imageObject.image(), imageObject.image(), imageObject.kernelSize(), 1 );
 }
