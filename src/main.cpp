@@ -61,11 +61,23 @@ public:
     {
         return this->image_;
     }
+
+    /**
+     * @brief Provide the filepath of the **source** of the stored image
+     *
+     * @return string
+     */
     string filename()
     {
         auto fname = this->filename_;
         return fname;
     }
+
+    /**
+     * @brief Provide the file path of the **destination** of the stored image; the stored image will be written to this path.
+     *
+     * @return string
+     */
     string outfilename()
     {
         auto oFname = this->outfilename_;
@@ -116,6 +128,12 @@ public:
  * @param cols
  */
 void blurFunction ( const Mat &imgIn, Mat &imgOut, const int &rows, const int &cols );
+
+/**
+ * @brief Apply a blurring operation to an image, passed as an ImageData object
+ *
+ * @param imageObj
+ */
 void blurFunction ( ImageData imageObj );
 
 /**
@@ -268,6 +286,5 @@ void blurFunction ( const Mat &imgIn, Mat &imgOut, const int &rows, const int &c
 
 void blurFunction ( ImageData imageObject )
 {
-    auto ksize = Size ( imageObject.rows(), imageObject.cols() );
     GaussianBlur ( imageObject.image(), imageObject.image(), imageObject.kernelSize(), 1 );
 }
