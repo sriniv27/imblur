@@ -5,30 +5,6 @@
       "name": "imblur"
     }
   ],
-  "launch": {
-    "configurations": [
-      {
-        "name": "(gdb) Launch imblur",
-        "type": "cppdbg",
-        "request": "launch",
-        "program": "./imblur -i 'screencap.png' -s 69",
-        "args": [],
-        "stopAtEntry": false,
-        "cwd": "${workspaceFolder}",
-        "environment": [],
-        "externalConsole": false,
-        "MIMode": "gdb",
-        "setupCommands": [
-          {
-            "description": "Enable pretty-printing for gdb",
-            "text": "-enable-pretty-printing",
-            "ignoreFailures": true
-          }
-        ]
-      }
-    ],
-    "compounds": []
-  },
   "settings": {
     "C_Cpp.clang_format_sortIncludes": false,
     "C_Cpp.default.includePath": [
@@ -40,7 +16,8 @@
     "cmake.configureOnOpen": true,
     "cmake.debugConfig": {
       "args": [
-        "-iscreencap.png",
+        "-iscreenshot.png",
+        "-oscreenshot.png",
         "-m3",
         "-n5",
         "-l3"
@@ -50,6 +27,10 @@
     "C_Cpp.loggingLevel": "Information",
     "files.associations": {
       "*.tcc": "cpp"
+    },
+    "[cpp]":{
+      "editor.wordBasedSuggestions": false,
+      "editor.defaultFormatter": "ms-vscode.cpptools"
     },
     "C_Cpp.clang_format_fallbackStyle": "LLVM",
   }
