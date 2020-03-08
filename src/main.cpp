@@ -121,9 +121,6 @@ int main ( int ac, char *av[] )
 
     try
     {
-
-        auto console = spdlog::stdout_logger_mt ( "console" );
-        auto err_logger = spdlog::stderr_logger_mt ( "stderr" );
         string filename;
         string outfilename;
         int rows = 0;
