@@ -24,3 +24,6 @@ public/**
 astylerc
 formatbackup-*
 *.orig
+project-workspace.code-workspace
+.vscode/tasks.json
+project-workspace.code-workspace
