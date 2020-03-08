@@ -62,7 +62,6 @@ int main(int ac, char *av[]) {
   auto err_logger = spdlog::stderr_logger_mt("stderr");
 
   try {
-
     string filename;
     string outfilename;
     int rows = 0;
